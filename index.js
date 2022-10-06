@@ -26,6 +26,10 @@ const main = (options = {}) => async input => {
 		args.push(`--colors=${options.colors}`);
 	}
 
+	if (options.lossy) {
+		args.push(`--lossy=${options.lossy}`);
+	}
+
 	const {stdout} = await execa(gifsicle, args, {
 		encoding: null,
 		maxBuffer: Number.POSITIVE_INFINITY,

@@ -18,3 +18,10 @@ test('Buffer - non-binary', async t => {
 
 	t.is(data.toString(), 'string');
 });
+
+test('Lossy', async t => {
+	const buf = await fs.readFile(new URL('fixture.gif', import.meta.url));
+	const data = await imageminGifsicle()(buf);
+
+	t.true(data.length < buf.length);
+});
